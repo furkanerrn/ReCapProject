@@ -10,6 +10,8 @@ namespace Business.Abstract
     {
 
         List<Car> GetAll();
+
+        List<Car> Get();
        
 
     }

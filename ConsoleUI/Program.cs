@@ -14,6 +14,8 @@ namespace ConsoleUI
             {
                 Console.WriteLine(cars.Description);
             }
+            carManager.GetCarsByColorId();
+            
 
             Console.WriteLine("Furkn Eren");
             Console.ReadLine();

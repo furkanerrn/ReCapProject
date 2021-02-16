@@ -5,6 +5,7 @@ using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -18,9 +19,19 @@ namespace Business.Concrete
             _cardal = cardal;
         }
 
+        public List<Car> Get()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetAll()
         {
            return _cardal.GetAll();
+        }
+
+        public List<Car> GetCarsByColorId()
+        {
+            return _cardal.GetCarsByColorId();
         }
     }
 }

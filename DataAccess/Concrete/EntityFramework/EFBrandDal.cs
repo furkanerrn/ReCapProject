@@ -1,7 +1,9 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -11,29 +13,57 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public void Add(Brand entity)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context = new NorthwindContext())
+            {
+               var AddedBrand=context.Entry(entity);
+                AddedBrand.State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Brand entity)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                var DeletedBrand = context.Remove(entity);
+                DeletedBrand.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
        
 
         public Brand Get(Expression<Func<Brand, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context=new NorthwindContext())
+            {
+                return context.Set<Brand>().SingleOrDefault(filter);
+            }
         }
 
        
 
         public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                return filter == null
+                    ? context.Set<Brand>().ToList()
+                    : context.Set<Brand>().Where(filter).ToList();
+            }
         }
 
         public List<Brand> GetById()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Brand> GetCarsByColorId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Brand> GetCarsByColorId(Expression<Func<Brand, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

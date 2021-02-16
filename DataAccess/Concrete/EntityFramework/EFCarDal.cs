@@ -68,6 +68,19 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
-        
+        public List<Car> GetCarsByColorId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetCarsByColorId(Expression<Func<Car, bool>> filter = null)
+        {
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                return filter == null
+                    ? context.Set<Car>().ToList()
+                    : context.Set<Car>().Where(filter).ToList();
+            }
+        }
     }
 }
