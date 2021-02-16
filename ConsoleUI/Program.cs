@@ -14,10 +14,8 @@ namespace ConsoleUI
             {
                 Console.WriteLine(cars.Description);
             }
-          
-            Console.WriteLine("program sonlandı");
-            Console.WriteLine("Engin Hocaya Sevigilerle");
-           
+
+            Console.WriteLine("Furkn Eren");
             Console.ReadLine();
         }
     }
