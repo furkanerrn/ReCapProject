@@ -58,6 +58,11 @@ namespace DataAccess.Concrete.EntityFramework
             throw new NotImplementedException();
         }
 
+        public List<Brand> GetCarsByBrandId(Expression<Func<Brand, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Brand> GetCarsByColorId()
         {
             throw new NotImplementedException();

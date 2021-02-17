@@ -16,15 +16,15 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{ CarId=1,  ColorId=2, DailyPrice=150, Description="Hyundai araba", ModelYear=2020},
+                new Car{ CarId=1,   BrandId=1,ColorId=2, DailyPrice=150, Description="Hyundai araba", ModelYear=2020},
 
-                new Car{ CarId=2,  ColorId=1, DailyPrice=250, Description="Mercedes araba", ModelYear=2011},
+                new Car{ CarId=2,BrandId=2,  ColorId=1, DailyPrice=250, Description="Mercedes araba", ModelYear=2011},
 
-                new Car{ CarId=3,  ColorId=4, DailyPrice=170, Description="Renault araba", ModelYear=2015},
+                new Car{ CarId=3,BrandId=4,  ColorId=4, DailyPrice=170, Description="Renault araba", ModelYear=2015},
 
-                new Car{ CarId=4,  ColorId=3, DailyPrice=560, Description="Ferrari araba", ModelYear=2009},
+                new Car{ CarId=4,BrandId=3  ,ColorId=3, DailyPrice=560, Description="Ferrari araba", ModelYear=2009},
 
-                new Car{ CarId=5,  ColorId=2, DailyPrice=140, Description="Opel araba", ModelYear=2021},
+                new Car{ CarId=5, BrandId=5, ColorId=2, DailyPrice=140, Description="Opel araba", ModelYear=2021},
             };
         }
 
@@ -65,6 +65,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<Car> GetById()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetCarsByBrandId(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

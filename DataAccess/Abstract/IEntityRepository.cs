@@ -16,5 +16,7 @@ namespace DataAccess.Abstract
         List<T> GetAll(Expression<Func<T, bool>> filter=null);
 
         List<T> GetCarsByColorId(Expression<Func<T, bool>> filter = null);
+
+        List<T> GetCarsByBrandId(Expression<Func<T, bool>> filter = null);
     }
 }

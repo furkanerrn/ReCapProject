@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public class IBrandService
+    public interface IBrandService
     {
-        List<Brand> GetAll;
+        List<Brand> GetAll();
+
+        List<Brand> GetByBrandId(int ıd);
     }
 }
