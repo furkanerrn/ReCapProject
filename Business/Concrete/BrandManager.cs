@@ -23,7 +23,7 @@ namespace Business.Concrete
 
         public List<Brand> GetByBrandId(int ıd)
         {
-            return _brand.GetAll(p => p.BrandId == ıd);
+            return _brand.GetAll(p=>p.BrandId==ıd);
         }
     }
 }
