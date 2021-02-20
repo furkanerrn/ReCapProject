@@ -71,7 +71,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<Color> GetCarsByBrandId(Expression<Func<Color, bool>> filter = null)
         {
-            throw new NotImplementedException();
+           throw new NotImplementedException();
         }
     }
 }

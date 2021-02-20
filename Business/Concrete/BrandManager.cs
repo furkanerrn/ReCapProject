@@ -11,6 +11,21 @@ namespace Business.Concrete
     {
         EFBrandDal _brand;
 
+        public void Add(Brand brand)
+        {
+            _brand.Add(brand);
+        }
+
+        public void Delete(Brand brand)
+        {
+            _brand.Delete(brand);
+        }
+
+        public void Update(Brand brand)
+        {
+            _brand.Update(brand);
+        }
+
         public BrandManager(EFBrandDal brand)
         {
             _brand = brand;

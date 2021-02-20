@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -43,8 +44,23 @@ namespace DataAccess.Concrete.EntityFramework
         }
         #endregion
 
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            using (NorthwindContext context=new NorthwindContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join co in context.Colors
+                             on c.ColorId equals co.ColorId
 
-       public Car Get(Expression<Func<Car, bool>> filter)
+              select new ProductDetailDto { BrandName = b.BrandName, ColorName = co.ColorName,CarId = c.CarId, DailyPrice = c.DailyPrice, Descriptions = c.Description };
+                return result.ToList();
+            }
+          
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
        {
             using (NorthwindContext context=new NorthwindContext())
             {
@@ -87,5 +103,7 @@ namespace DataAccess.Concrete.EntityFramework
                     : context.Set<Car>().Where(filter).ToList();
             }
         }
+
+       
     }
 }
