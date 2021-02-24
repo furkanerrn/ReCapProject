@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Constants;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -10,31 +11,42 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-
-           
-            CarManager manager = new CarManager(new EFCarDal());
-            foreach (var thecar in manager.GetProductDetails())
-            {
-                Console.WriteLine("Detaylar getirildi");
-                Console.WriteLine(thecar.CarId + " " + thecar.Descriptions + " " + thecar.DailyPrice+ " "+thecar.ColorName);
-                
-            }
             Console.ForegroundColor = ConsoleColor.Cyan;
-            CarManager carManagerr = new CarManager(new EFCarDal());
-            foreach (var car in carManagerr.GetCarsByColorId(2)) 
+
+            CarManager manager = new CarManager(new EFCarDal());
+            var result = manager.GetProductDetails();
+            if (result.Success==true)
             {
-                Console.WriteLine("2 numaralı renk id sıne sahip araba: {0}",car.Description);
+                foreach (var thecar in manager.GetProductDetails().Data)
+                {
+                    Console.WriteLine("Detaylar getirildi");
+                    Console.WriteLine(thecar.CarId + "/  "+"Tanım :" + thecar.Descriptions + " / " +"Ücret : "+ thecar.DailyPrice + " / " +"  Renk :" + thecar.ColorName);
+                   
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+           
+            
+            CarManager carManagerr = new CarManager(new EFCarDal());
+            foreach (var car in carManagerr.GetCarsByColorId(2).Data) 
+            {
+          //      Console.WriteLine("2 numaralı renk id sıne sahip araba: {0}",car.Description);
             }
 
             ColorManager colorManager1 = new ColorManager(new EFColorDal());
-           // colorManager1.Add(new Color {  ColorName = "Blue" });
+
+          // colorManager1.Add(new Color {  ColorName = "Brown" });
+           // Console.WriteLine("Brown color added");
 
             CarManager cm = new CarManager(new EFCarDal());
             //Car skoda = new Car { BrandId = 5, CarId = 8, ColorId = 2, DailyPrice = 2000, Description = "Skoda araba", ModelYear = 2015 };
             //cm.Add(skoda);
-            cm.Update(new Car {  CarId=4, Description="bugatti araba"});
+           // cm.Update(new Car {  CarId=4, Description="bugatti araba"});
 
-            foreach (var thecar in cm.GetCarsByBrandId(5))
+            foreach (var thecar in cm.GetCarsByBrandId(5).Data)
             {
          //       Console.WriteLine(thecar.CarId+" "+thecar.Description+" "+thecar.DailyPrice);
            //     Console.WriteLine("Bugatti arabaya ait veriler başarıyla getirildi");
@@ -46,7 +58,7 @@ namespace ConsoleUI
             //col.Add(cl);
 
             CarManager carManager = new CarManager(new EFCarDal());
-            foreach (var cars in carManager.GetCarsByBrandId(2))
+            foreach (var cars in carManager.GetCarsByBrandId(2).Data)
             {
              //   Console.WriteLine("2. arabanın tanımı "+cars.Description);
             }
