@@ -30,7 +30,7 @@ namespace ConsoleUI
             //  rentalManager.Add(new Rentals { CarId = 1, CustomerId=2, RentDate = DateTime.Now, ReturnDate = new DateTime(2021, 10, 29) });
 
 
-            foreach (var item in rentalManager.GetById(2).Data)
+            foreach (var item in rentalManager.GetRentalDetails(2).Data)
             {
                 Console.WriteLine("Mülteri Id: " + item.CustomerId + " || " + "Araba numarası: " + item.CarId + "  || " + "Kiralama tarihi " + item.RentDate + "  || " + "Dönüş Tarihi " + item.ReturnDate);
             }

@@ -12,6 +12,6 @@ namespace Business.Abstract
         IResult Update(Rentals rental);  //Bunlar data döndürmedikleri için IResult
         IResult Delete(Rentals rental);
         IDataResult<List<Rentals>> GetAll(); //Bunlar data döndürdükleri için IDataResult
-        IDataResult<List<Rentals>> GetById(int rentalId);
+        IDataResult<List<Rentals>> GetRentalDetails(int rentalId);
     }
 }
