@@ -24,7 +24,7 @@ namespace Business.Concrete
         public IResult  Add(Car car)
         {
              
-            if (car.ModelYear<2005)
+            if (car.ModelYear<2000)
             {
                 return new ErrorResult(Messages.OldCar);
             }

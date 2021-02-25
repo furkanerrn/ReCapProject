@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Business.Constants
 {
-   public static  class Messages //Constants proje sabitlerinin yer aldığıı bir bölüm
+    public static class Messages //Constants proje sabitlerinin yer aldığıı bir bölüm
     {
         public static string CarAdded = "Araba eklendi";
 
@@ -26,8 +26,28 @@ namespace Business.Constants
 
         public static string ColorListed = "Renge  göre listelendi.";
 
+        public static string UsersListed = "Kullanıcılar listelendi";
 
+        public static string UserInfoListed = "Kullanıcı bilgileri getirildi";
 
+        public static string CustomerAdded = "Müşteri eklendi";
 
+        public static string SameCustomer = "Müşteri sistemde zaten kayıtlı";
+
+        public static string SameUser = "Kullanıcı önceden kayıtlı";
+
+        public static string CustomersListed = "Müşteri listelendi";
+
+        public static string CustomerUpdated = "Müşteri güncellendi";
+
+        public static string RentAdded = "Kiralama talebi eklendi";
+
+        public static string RentDeleted = "Kiralama talebi iptal edildi";
+
+        public static string RentUpdated = "Kiralama talebi güncellendi";
+
+        public static string RentsListed = "Kiralama Talepleri listelendi";
+
+        public static string RentalListedById = "Araç kiralama bilgisi getirildi";
     }
 }

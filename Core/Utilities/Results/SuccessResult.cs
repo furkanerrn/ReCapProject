@@ -6,6 +6,8 @@ namespace Core.Utilities.Results
 {
     public class SuccessResult:Result
     {
+        
+
         public SuccessResult(string message):base(true,message) //Yapılan iş başarılı old için true oldu
         {
              
@@ -17,6 +19,5 @@ namespace Core.Utilities.Results
         }
 
         
-      
     }
 }
