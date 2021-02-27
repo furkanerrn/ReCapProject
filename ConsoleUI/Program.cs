@@ -11,7 +11,8 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-
+            ColorManager colorManager2 = new ColorManager(new EFColorDal());
+            colorManager2.Add(new Color { ColorName = "Platon" });
             //CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
             //customerManager.Add(new Customers { UserId = 8, CompanyName = "Nestle" });
             //foreach (var item in customerManager.GetCustomerById(2).Data)
@@ -29,17 +30,21 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EFRentalDal());
             //  rentalManager.Add(new Rentals { CarId = 1, CustomerId=2, RentDate = DateTime.Now, ReturnDate = new DateTime(2021, 10, 29) });
 
-
+            var result = rentalManager.GetRentalDetails(2);
+            Console.WriteLine(result.Message);
             foreach (var item in rentalManager.GetRentalDetails(2).Data)
             {
                 Console.WriteLine("Mülteri Id: " + item.CustomerId + " || " + "Araba numarası: " + item.CarId + "  || " + "Kiralama tarihi " + item.RentDate + "  || " + "Dönüş Tarihi " + item.ReturnDate);
             }
 
             Console.WriteLine("*******");
+            var res = rentalManager.GetAll();
+            Console.WriteLine(res.Message);
             foreach (var item in rentalManager.GetAll().Data)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine( "Mülteri Id: "+item.CustomerId +" || "+"Araba numarası: "+ item.CarId +"  || " + "Kiralama tarihi "+item.RentDate+ "  || "+"Dönüş Tarihi " +item.ReturnDate );
+               
             }
 
 
@@ -113,13 +118,14 @@ namespace ConsoleUI
            
 
             ColorManager colorManager = new ColorManager(new EFColorDal());
-            foreach (var item in colorManager.GetColorId(3))
+            foreach (var item in colorManager.GetColorId(3).Data)
             {
          //       Console.WriteLine("3 .rengin adı: "+item.ColorName);
             }
+           
 
             BrandManager brandManager = new BrandManager(new EFBrandDal());
-            foreach (var item in brandManager.GetByBrandId(3))
+            foreach (var item in brandManager.GetByBrandId(3).Data)
             {
           //      Console.WriteLine("3. marka : "+item.BrandName);
             }

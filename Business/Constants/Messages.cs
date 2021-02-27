@@ -20,7 +20,7 @@ namespace Business.Constants
 
         public static string CarListed = "Arabalar listelendi.";
 
-        public static string BrandListed = "Markaya göre listelendi.";
+        public static string BrandAdded = "Marka eklendi.";
 
         public static string DetailsListed = "Araba detayları listelendi.";
 
@@ -49,5 +49,23 @@ namespace Business.Constants
         public static string RentsListed = "Kiralama Talepleri listelendi";
 
         public static string RentalListedById = "Araç kiralama bilgisi getirildi";
+
+        public static string ColorAdded = "Renk eklendi";
+
+        public static string ColorDeleted = "Renk silindi";
+
+        public static string ColorUpdated = "Renk güncellendi";
+
+        public static string ColorsListed = "Renkler listelendi";
+
+        public static string ColorsListedById = "Renk hakkında bilgiler getirildi";
+
+        public static string BrandDeleted = "Marka silindi";
+
+        public static string BrandUpdated = "Marka bilgisi güncellendi";
+
+        public static string BrandsListed = "Markalar listelendi";
+
+        public static string BrandListed { get; internal set; }
     }
 }

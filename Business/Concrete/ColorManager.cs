@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -9,41 +12,46 @@ namespace Business.Concrete
 {
    public class ColorManager : IColorService
     {
-        EFColorDal _color;
-
-        public void Add(Color color)
-        {
-            _color.Add(color);
-        }
-
-        public void Delete(Color color)
-        {
-            _color.Delete(color);
-        }
-
-        public void Update(Color color)
-        {
-            _color.Update(color);
-        }
-
-        public ColorManager(EFColorDal color)
+        IColorDAL _color;
+        public ColorManager(IColorDAL color)
         {
             _color = color;
         }
+          
 
-        public List<Color> GetAll()
+        public IResult Add(Color color)
         {
-            return _color.GetAll();
+            _color.Add(color);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
-        public List<Color> GetAllByColor(int Colorıd)
+        public IResult Delete(Color color)
         {
-            throw new NotImplementedException();
+            _color.Delete(color);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
-        public List<Color> GetColorId(int Colorıd)
+       
+
+        public IResult Update(Color color)
         {
-            return _color.GetAll(p => p.ColorId == Colorıd);
+            _color.Update(color);
+            return new SuccessResult(Messages.ColorUpdated);
+        }
+
+       
+
+        public IDataResult<List<Color>> GetAll()
+        {
+
+            return new SuccesDataResult<List<Color>>(_color.GetAll(), Messages.ColorsListed);
+        }
+
+       
+
+        public  IDataResult<List<Color>> GetColorId(int colorıd)
+        {
+            return new SuccesDataResult<List<Color>>(_color.GetAll(p => p.ColorId ==colorıd),Messages.ColorsListedById);
         }
 
        

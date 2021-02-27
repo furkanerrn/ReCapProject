@@ -15,8 +15,8 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        EFCarDal _cardal;
-        public CarManager(EFCarDal cardal)
+        ICardal _cardal;
+        public CarManager(ICardal cardal)
         {
             _cardal = cardal;
         }
@@ -63,7 +63,7 @@ namespace Business.Concrete
        
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccesDataResult<List<Car>>(_cardal.GetCarsByBrandId(p=>p.BrandId==brandId),Messages.BrandListed);
+            return new SuccesDataResult<List<Car>>(_cardal.GetCarsByBrandId(p=>p.BrandId==brandId),Messages.BrandAdded);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
