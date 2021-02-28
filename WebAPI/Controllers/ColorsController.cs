@@ -15,11 +15,35 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ColorsController : ControllerBase
     {
-        public List<Color> Get()
+        IColorService _colorService;
+
+        public ColorsController(IColorService colorService)
         {
-            IColorService _colors = new ColorManager(new EFColorDal());
-            var res = _colors.GetAll();
-            return res.Data;
+            _colorService = colorService;
         }
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+           
+            var res = _colorService.GetAll();
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res.Data);
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Color color)
+        {
+            var res = _colorService.Add(color);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
     }
 }

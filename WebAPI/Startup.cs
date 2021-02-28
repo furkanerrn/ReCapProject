@@ -34,20 +34,20 @@ namespace WebAPI
             services.AddSingleton<ICarService, CarManager>();
             services.AddSingleton<ICardal, EFCarDal>();
 
-            //services.AddSingleton<IColorService, ColorManager>();
-            //services.AddSingleton<IColorDAL,EFColorDal>();
+            services.AddSingleton<IColorService, ColorManager>();
+            services.AddSingleton<IColorDAL,EFColorDal>();
 
-            //services.AddSingleton<IBrandService,BrandManager>();
-            //services.AddSingleton<IBrandDal,EFBrandDal>();
+            services.AddSingleton<IBrandService, BrandManager>();
+            services.AddSingleton<IBrandDal, EFBrandDal>();
 
-            //services.AddSingleton<IUserService,UserManager>();
-            //services.AddSingleton<IUserDal,EFUserDal>();
+            services.AddSingleton<IUserService, UserManager>();
+            services.AddSingleton<IUserDal, EFUserDal>();
 
-            //services.AddSingleton<ICustomerService,CustomerManager>();
-            //services.AddSingleton<ICustomerDal,EFCustomerDal>();
+            services.AddSingleton<ICustomerService, CustomerManager>();
+            services.AddSingleton<ICustomerDal, EFCustomerDal>();
 
-            //services.AddSingleton<IRentalService, RentalManager>();
-            //services.AddSingleton<IRentalDal, EFRentalDal>();
+            services.AddSingleton<IRentalService, RentalManager>();
+            services.AddSingleton<IRentalDal, EFRentalDal>();
 
         }
 

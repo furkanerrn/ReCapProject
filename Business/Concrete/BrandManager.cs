@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
@@ -11,8 +12,8 @@ namespace Business.Concrete
 {
    public class BrandManager:IBrandService
     {
-        EFBrandDal _brand;
-        public BrandManager(EFBrandDal brand)
+        IBrandDal _brand;
+        public BrandManager(IBrandDal brand)
         {
             _brand = brand;
         }
@@ -39,6 +40,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>>  GetAll()
         {
+            //if (DateTime.Now.Hour == 15)
+            //{
+            //    return new ErrorDataResult<List<Brand>>(Messages.MaintenanceTime);
+            //}
             return new SuccesDataResult<List<Brand>>(_brand.GetAll(), Messages.BrandsListed);
         }
 

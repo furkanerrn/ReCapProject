@@ -53,17 +53,17 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==13)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour==15)
+            //{
+            //    return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            //}
             return new SuccesDataResult<List<Car>>(_cardal.GetAll(),Messages.CarListed);
         }
 
        
-        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarById(int carıd)
         {
-            return new SuccesDataResult<List<Car>>(_cardal.GetCarsByBrandId(p=>p.BrandId==brandId),Messages.BrandAdded);
+            return new SuccesDataResult<List<Car>>(_cardal.GetCarsByBrandId(p=>p.CarId== carıd),Messages.CarInfoListed);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)

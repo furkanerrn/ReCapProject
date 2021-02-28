@@ -15,11 +15,70 @@ namespace WebAPI.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        public  List<Brand> Get()
+        IBrandService _brandservice;
+
+        public BrandsController(IBrandService brandservice)
         {
-            IBrandService _brand = new BrandManager(new EFBrandDal());
-            var res = _brand.GetAll();
-            return res.Data;
+            _brandservice = brandservice;
         }
+        [HttpGet("getall")]
+        public  IActionResult GetAll()
+        {
+           
+            var res = _brandservice.GetAll();
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+        [HttpGet("brandıd")]
+        public IActionResult GetById(int id)
+        {
+            var res = _brandservice.GetByBrandId(id);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+
+        [HttpPost("add")]
+        public IActionResult Add(Brand brand)
+        {
+            var res = _brandservice.Add(brand);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res.Message);
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete(Brand brand)
+        {
+            var res = _brandservice.Delete(brand);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(Brand brand)
+        {
+            var res = _brandservice.Update(brand);
+            if (res.Success)
+            {
+                return Ok(res);
+
+            }
+            return BadRequest(res);
+        }
+
+
     }
 }

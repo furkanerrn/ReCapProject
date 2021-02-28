@@ -15,11 +15,69 @@ namespace WebAPI.Controllers
     [ApiController]
     public class RentalsController : ControllerBase
     {
-        public List<Rentals> Get()
+        IRentalService _rentalService;
+
+        public RentalsController(IRentalService rentalService)
         {
-            IRentalService _rental = new RentalManager(new EFRentalDal());
-            var res = _rental.GetAll();
-            return res.Data;
+            _rentalService = rentalService;
+        }
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+           
+            var res = _rentalService.GetAll();
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+        [HttpGet("getrentalıd")]
+        public IActionResult GetRentalId(int id)
+        {
+            var res= _rentalService.GetRentalDetails(id);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+        [HttpPost("add")]
+        public IActionResult Add(Rentals rental)
+        {
+            var res = _rentalService.Add(rental);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+        
+       
+        [HttpDelete("delete")]
+        public IActionResult Delete(Rentals rental)
+        {
+            var res = _rentalService.Delete(rental);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
+        }
+
+
+        [HttpPut("update")]
+        public IActionResult Update(Rentals rental)
+        {
+            var res = _rentalService.Update(rental);
+            if (res.Success)
+            {
+                return Ok(res);
+            }
+            return BadRequest(res);
         }
     }
 }
