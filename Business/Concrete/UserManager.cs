@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,9 +23,9 @@ namespace Business.Concrete
 
         public IResult Add(Users user)
         {
-           
-                _user.Add(user);
-                return new SuccessResult("Kullanıcı eklendi");
+            ValidationTool.Validate(new UserValidator(), user);
+            _user.Add(user);
+             return new SuccessResult("Kullanıcı eklendi");
            
         }
 
