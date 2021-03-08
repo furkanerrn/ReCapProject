@@ -22,9 +22,9 @@ namespace Business.Abstract
        
         IDataResult<List<Car>> Get();
        
-        IDataResult<List<Car>>GetCarsByColorId(int colorId);
+        IDataResult<Car>GetCarsByColorId(int colorId);
        
-        IDataResult<List<Car>> GetCarById(int carıd);
+        IDataResult<Car> GetCarById(int carıd);
        
         IDataResult<List<ProductDetailDto>> GetProductDetails();
 

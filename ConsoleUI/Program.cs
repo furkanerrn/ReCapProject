@@ -99,7 +99,7 @@ namespace ConsoleUI
             //cm.Add(skoda);
            // cm.Update(new Car {  CarId=4, Description="bugatti araba"});
 
-            foreach (var thecar in cm.GetCarsByBrandId(5).Data)
+            foreach (var thecar in cm.GetCarById(5).Data)
             {
          //       Console.WriteLine(thecar.CarId+" "+thecar.Description+" "+thecar.DailyPrice);
            //     Console.WriteLine("Bugatti arabaya ait veriler başarıyla getirildi");
@@ -111,7 +111,7 @@ namespace ConsoleUI
             //col.Add(cl);
 
             CarManager carManager = new CarManager(new EFCarDal());
-            foreach (var cars in carManager.GetCarsByBrandId(2).Data)
+            foreach (var cars in carManager.GetCarById(2).Data)
             {
              //   Console.WriteLine("2. arabanın tanımı "+cars.Description);
             }

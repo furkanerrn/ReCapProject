@@ -79,5 +79,15 @@ namespace Business.Concrete
             }
             return new SuccesDataResult<List<ProductDetailDto>>(_cardal.GetProductDetails(),Messages.DetailsListed);
         }
+
+        IDataResult<Car> ICarService.GetCarsByColorId(int colorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<Car> ICarService.GetCarById(int carıd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
