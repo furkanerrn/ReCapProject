@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.AutoFac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -21,7 +22,9 @@ namespace Business.Concrete
         {
             _brand = brand;
         }
+
         [ValidationAspect(typeof(BrandValidator))]
+        [SecuredOperation("brand.add,admin")]
         public IResult Add(Brand brand)
         {
             ValidationTool.Validate(new BrandValidator(),brand);
